@@ -64,12 +64,13 @@
       <textarea name="biography" class="form-control <?php if ($errors['biography']) {print 'error';} ?>" id="biography" aria-label="With textarea" placeholder="Расскажите о себе" <?php if ($errors['biography']) {print 'class="error"';} ?>><?php echo htmlspecialchars($values['biography']); ?></textarea>
     </div>
     <div class="text-center mb-5">
-      <input name="checkbox" type="checkbox" class="btn-check" id="confirm" value="1">
+      <input name="checkbox"  <?php if (!empty($_SESSION['login'])) {echo 'checked'; } ?> type="checkbox" class="btn-check" id="confirm" value="1">
       <label class="btn btn-outline-primary" for="confirm">Чекбокс</label>
     </div>
     <div class="text-center mb-4">
       <input class="btn btn-success col-6" type="submit" value="Отправить">
     </div>
+    <?php if (!empty($_SESSION['login'])) {echo '<input type="hidden" name="token" value="' . $_SESSION["token"] . '">'; } ?>
   </form>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <script src="script.js" defer></script>
